@@ -84,7 +84,7 @@ VC_book/
 │       │   │   └── wav24kHz16bit/
 │       │   ├── nonpara30/
 │       │   ├── whisper10/
-│       │   └── falsetto10/
+│       │   └── falset10/
 │       ├── jvs002/
 │       ├── ...
 │       └── jvs100/
