@@ -1,0 +1,15 @@
+__MACOSX
+.DS_Store
+
+*.wav
+*.lab
+*.pyc
+
+*.npz
+*.pth
+*.json
+
+events*
+logs
+
+corpus
