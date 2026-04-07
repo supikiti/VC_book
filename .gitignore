@@ -6,8 +6,10 @@ __MACOSX
 *.pyc
 
 *.npz
+*.npy
 *.pth
 *.json
+*.ckpt
 
 events*
 logs
