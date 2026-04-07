@@ -5,7 +5,7 @@
 </a>
 <br>
 <strong>『Pythonで学ぶ音声変換』</strong><br>
-著者名 齋藤佑樹・中村泰貴著 ／ 出版社名 講談社刊<br><br>
+齋藤佑樹・中村泰貴著 ／ 講談社刊<br><br>
 <a href="https://amzn.asia/d/04IyfN83">📖 Amazonで購入</a>
 
 ---

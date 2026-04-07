@@ -1,9 +1,8 @@
 # AutoVC
 
+<img src="assets/autoencoder_architecture.png" alt="AutoVC Architecture">
+
 本ディレクトリでは、オートエンコーダに基づくノンパラレル音声変換モデル「AutoVC」を動かしながら学びます。
-
-AutoVCは、コンテンツエンコーダのボトルネック次元を適切に設計することで、コンテンツ情報と話者情報を自然に分離します。変換時には、エンコーダで抽出したコンテンツ表現に変換先話者の埋め込みを結合してデコーダに入力することで、パラレルデータを必要としないany-to-any音声変換を実現します。
-
 本コードは、[公式実装リポジトリ](https://github.com/auspicious3000/autovc)をベースにしています。
 
 ## ディレクトリ構成
@@ -21,7 +20,7 @@ auto_vc/
 ├── model_bl.py                # 話者エンコーダ（d-vector, LSTM）
 ├── solver_encoder.py          # 学習ループ
 ├── data_loader.py             # データセット・データローダ
-├── synthesis.py               # WaveNet波形合成ユーティリティ
+├── synthesis.py               # WaveNetでの波形合成
 ├── hparams.py                 # WaveNetハイパーパラメータ
 ├── config/
 │   ├── vctk.yaml              # VCTK用設定ファイル
@@ -92,9 +91,9 @@ auto_vc/
 
 | コーパス名 | 設定ファイル | 説明 |
 |---|---|---|
-| `vctk` | `config/vctk.yaml` | VCTKコーパス（サンプル4話者、`vctk-wavs/` に同梱） |
+| `vctk` | `config/vctk.yaml` | VCTKコーパス（サンプル4話者、`sample/vctk` に同梱） |
 | `jvs-full` | `config/jvs-full.yaml` | JVSコーパス全話者（`../corpus/jvs_ver1/` を参照） |
-| `jvs-mini` | `config/jvs-mini.yaml` | JVSコーパス少数話者（`jvs-mini-wavs/` を参照） |
+| `jvs-mini` | `config/jvs-mini.yaml` | JVSコーパス少数話者（`sample/jvs` を参照） |
 
 ```bash
 # VCTK で全ステージ一括実行（Stage 1〜6）
@@ -156,7 +155,7 @@ output/feature/{tag}/
 
 ### Stage 3: AutoVCモデル学習
 
-`train.pkl`を用いてAutoVCモデル（Generator）を学習します。学習途中のチェックポイントは `output/checkpoint/` に10000イテレーションごとに保存されます。
+`train.pkl`を用いてAutoVCを学習します。学習途中のチェックポイントは `output/checkpoint/` に10000イテレーションごとに保存されます。
 
 出力ファイル:
 
@@ -206,26 +205,4 @@ output/eval/{tag}/
 ├── p225xp228.wav             # 変換音声（話者ペアごとに1ファイル）
 ├── p226xp225.wav
 └── ...
-```
-
-## 設定の変更
-
-`config/*.yaml` でモデルや学習のパラメータを変更できます。主な設定項目:
-
-| 設定 | デフォルト値 | 説明 |
-|---|---|---|
-| `path.autovc_checkpoint` | `model/autovc.ckpt` | AutoVCモデルのチェックポイントパス |
-| `model.dim_neck` | `32` | ボトルネック次元数 |
-| `model.dim_emb` | `256` | 話者埋め込み次元数 |
-| `model.dim_pre` | `512` | デコーダ前処理次元数 |
-| `model.freq` | `32` | ダウンサンプリング周波数 |
-| `model.lambda_cd` | `1` | コード意味損失の重み |
-| `model.num_iters` | `1000000` | 学習イテレーション数 |
-| `model.batch_size` | `2` | バッチサイズ |
-| `model.len_crop` | `128` | 入力系列長（フレーム数） |
-
-コマンドラインからの上書きも可能です:
-
-```bash
-bash run.sh vctk 3 3  # Stage 3 のみ実行（YAMLのデフォルト設定で学習）
 ```
