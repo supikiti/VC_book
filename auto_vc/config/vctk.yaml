@@ -1,0 +1,25 @@
+hydra:
+  run:
+    dir: logs  # ログ保存ディレクトリ
+
+tag: vctk
+
+path:
+  root_dir: "./sample/${tag}"
+  target_dir: "./output/feature/${tag}"
+  d_vector_checkpoint: "model/3000000-BL.ckpt"
+  autovc_checkpoint: "model/autovc.ckpt"
+  vocoder_checkpoint: "model/checkpoint_step001000000_ema.pth"
+  eval_dir: "./output/eval/${tag}"
+
+model:
+  lambda_cd: 1
+  dim_neck: 32
+  dim_emb: 256
+  dim_pre: 512
+  freq: 32
+  data_dir: ${path.target_dir}
+  batch_size: 2
+  num_iters: 1000000
+  len_crop: 128
+  log_step: 10
