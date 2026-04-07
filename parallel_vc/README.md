@@ -56,33 +56,24 @@ JVSコーパスが `corpus/jvs_ver1/` に配置されていることを確認し
 
 ## 実行方法
 
-### 一括実行
-
-`run.sh` を使うと、Stage 1〜5 を一括で実行できます。
+全ステージの実行は `run.sh` を通して行います。第1引数に開始ステージ、第2引数に終了ステージを指定します（省略時はデフォルトで Stage 1〜5 を一括実行）。
 
 ```bash
-uv run bash run.sh
+# 全ステージ一括実行（Stage 1〜5）
+bash run.sh
+
+# Stage 3 から Stage 5 まで実行
+bash run.sh 3 5
+
+# Stage 1 のみ実行
+bash run.sh 1 1
 ```
 
-`run.sh` 内の `stage` と `stop_stage` を編集することで、実行するステージの範囲を制御できます。
+以下では、各ステージの処理内容と出力ファイルを説明します。
 
-```bash
-# 例: Stage 3 から Stage 5 まで実行
-stage=3
-stop_stage=5
-```
-
-### ステージごとの個別実行
-
-各ステージを個別に実行することもできます。
-
-#### Stage 1: WORLD特徴量抽出
+### Stage 1: WORLD特徴量抽出
 
 JVSコーパスの2話者（デフォルト: jvs001, jvs010）の音声から、WORLD vocoderを用いてF0（基本周波数）、スペクトル包絡、メルケプストラム（MCEP）、非周期性指標（AP）を抽出します。同時に、データの分割（train/val/test）も行います。
-
-```bash
-uv run python extract_features.py
-```
 
 出力ファイル:
 
@@ -100,13 +91,9 @@ output/
         └── test_features.npz
 ```
 
-#### Stage 2: 統計量の計算
+### Stage 2: 統計量の計算
 
 Stage 1 で抽出した学習データの特徴量から、話者ごとの統計量（対数F0の平均・標準偏差、MCEPの平均・標準偏差）を計算します。これらは特徴量の正規化およびF0変換に使用されます。
-
-```bash
-uv run python calculate_stats.py
-```
 
 出力ファイル:
 
@@ -118,13 +105,9 @@ output/feature/
     └── stats.npz
 ```
 
-#### Stage 3: DTWアライメント
+### Stage 3: DTWアライメント
 
 Stage 1 で抽出したMCEP特徴量に対してDTW（Dynamic Time Warping）を適用し、変換元話者と変換先話者の特徴量の時間軸を揃えます。
-
-```bash
-uv run python dtw_alignment.py
-```
 
 出力ファイル:
 
@@ -140,13 +123,9 @@ output/feature/
     └── test_features_aligned.npz
 ```
 
-#### Stage 4: 学習
+### Stage 4: 学習
 
 DTWアライメント済みのMCEP特徴量を用いて、3層MLPモデルを学習します。学習の進捗はTensorBoardで確認できます。
-
-```bash
-uv run python train.py
-```
 
 出力ファイル:
 
@@ -166,13 +145,9 @@ TensorBoardで学習ログを確認する場合:
 uv run tensorboard --logdir output/train_log
 ```
 
-#### Stage 5: 推論・評価
+### Stage 5: 推論・評価
 
 学習済みモデルを使って音声変換を実行し、MCD（Mel-Cepstral Distortion）による客観評価と変換音声の生成を行います。
-
-```bash
-uv run python eval.py
-```
 
 出力ファイル:
 
@@ -192,10 +167,3 @@ output/eval/
 | `train.epoch` | `20` | 学習エポック数 |
 | `train.device` | `cpu` | 使用デバイス (`cpu` / `mps` / `cuda`) |
 | `train.model.hidden_dim` | `512` | 隠れ層の次元数 |
-
-Hydraを使用しているため、コマンドラインから設定を上書きすることもできます。
-
-```bash
-# 例: 変換元話者と学習エポック数を変更
-uv run python train.py source_speaker=jvs002 train.epoch=50
-```
