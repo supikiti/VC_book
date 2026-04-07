@@ -1,7 +1,5 @@
 # AutoVC
 
-<img src="assets/autoencoder_architecture.png" alt="AutoVC Architecture">
-
 本ディレクトリでは、オートエンコーダに基づくノンパラレル音声変換モデル「AutoVC」を動かしながら学びます。
 本コードは、[公式実装リポジトリ](https://github.com/auspicious3000/autovc)をベースにしています。
 
