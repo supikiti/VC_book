@@ -267,22 +267,6 @@ output/eval/
 └── ...
 ```
 
-## 設定の変更
-
-`config/jvs_w_sr.yaml` で各種パラメータを変更できます。主な設定項目:
-
-| カテゴリ | 設定 | デフォルト値 | 説明 |
-|---|---|---|---|
-| モデル | `model.inter_channels` | `192` | 潜在空間の次元数 |
-| モデル | `model.gin_channels` | `256` | 話者埋め込みの次元数 |
-| モデル | `model.ssl_dim` | `1024` | WavLM特徴量の次元数 |
-| モデル | `model.use_spk` | `true` | 話者埋め込みの使用 |
-| 学習 | `train.batch_size` | `256` | バッチサイズ |
-| 学習 | `train.learning_rate` | `2e-4` | 学習率 |
-| 学習 | `train.epochs` | `10000` | 学習エポック数 |
-| 学習 | `train.use_sr` | `true` | SRデータ拡張の使用 |
-| データ | `data.sampling_rate` | `16000` | サンプリングレート |
-
 ## 引用
 
 [FreeVCの公式リポジトリ](https://github.com/OlaWod/FreeVC)からコードの大部分で引用を行いました。

@@ -155,15 +155,3 @@ uv run tensorboard --logdir output/train_log
 output/eval/
 └── VOICEID_jvs001_to_jvs010.wav           # 変換音声（評価データの各発話ごと）
 ```
-
-## 設定の変更
-
-`config/config.yaml` で話者や学習パラメータを変更できます。主な設定項目:
-
-| 設定 | デフォルト値 | 説明 |
-|---|---|---|
-| `source_speaker` | `jvs001` | 変換元話者 |
-| `target_speaker` | `jvs010` | 変換先話者 |
-| `train.epoch` | `20` | 学習エポック数 |
-| `train.device` | `cpu` | 使用デバイス (`cpu` / `mps` / `cuda`) |
-| `train.model.hidden_dim` | `512` | 隠れ層の次元数 |
