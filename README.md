@@ -17,10 +17,10 @@
 
 | ディレクトリ | 対応章 | モデル | 概要 |
 |---|---|---|---|
-| `parallel_vc/` | 第5章 | パラレル音声変換 | 簡易なDNNに基づく音声変換 |
-| `auto_vc/` | 第5章 | AutoVC | オートエンコーダーによる音声変換 |
-| `free_vc/` | 第7章 | FreeVC | 正規化フローに基づく音声変換 |
-| `seed_vc/` | 第8章 | SeedVC | フローマッチングに基づく音声変換 |
+| `ParallelVC/` | 第5章 | パラレル音声変換 | 簡易なDNNに基づく音声変換 |
+| `AutoVC/` | 第5章 | AutoVC | オートエンコーダーによる音声変換 |
+| `FreeVC/` | 第7章 | FreeVC | 正規化フローに基づく音声変換 |
+| `SeedVC/` | 第8章 | SeedVC | フローマッチングに基づく音声変換 |
 
 ## 動作確認環境
 
@@ -88,10 +88,10 @@ VC_book/
 │       ├── jvs002/
 │       ├── ...
 │       └── jvs100/
-├── parallel_vc/
-├── auto_vc/
-├── free_vc/
-└── seed_vc/
+├── ParallelVC/
+├── AutoVC/
+├── FreeVC/
+└── SeedVC/
 ```
 
 ### 4. 各モデルのセットアップと実行
@@ -100,7 +100,7 @@ VC_book/
 
 ```bash
 # 例：FreeVCを試す場合
-cd free_vc
+cd FreeVC
 uv sync
 uv run python src/*.py
 ```
@@ -138,10 +138,10 @@ uv run python src/*.py
 
 本リポジトリのライセンスはディレクトリによって異なります。
 
-- `parallel_vc/`、`auto_vc/`、`free_vc/`：[MIT License](LICENSE)
-- `seed_vc/`：[GPL-3.0 License](seed_vc/LICENSE)（派生元の [Seed-VC](https://github.com/Plachtaa/seed-vc) のライセンスに準拠）
+- `ParallelVC/`、`AutoVC/`、`FreeVC/`：[MIT License](LICENSE)
+- `SeedVC/`：[GPL-3.0 License](SeedVC/LICENSE)（派生元の [Seed-VC](https://github.com/Plachtaa/seed-vc) のライセンスに準拠）
 
-`seed_vc/` 内のコードを改変・再配布する場合は、GPL-3.0の条件に従う必要があります。
+`SeedVC/` 内のコードを改変・再配布する場合は、GPL-3.0の条件に従う必要があります。
 詳細は各ディレクトリ内のLICENSEファイルをご確認ください。
 
 JVSコーパスの利用条件については、コーパス配布ページの規約に従ってください。

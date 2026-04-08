@@ -17,4 +17,4 @@ __MACOSX
 events*
 logs
 
-corpus
+corpus.venv
