@@ -102,7 +102,6 @@ VC_book/
 # 例：FreeVCを試す場合
 cd FreeVC
 uv sync
-uv run python src/*.py
 ```
 
 各ディレクトリの `README.md` に、モデルごとの詳細な実行手順を記載しています。
