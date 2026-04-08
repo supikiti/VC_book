@@ -13,8 +13,10 @@ __MACOSX
 *.ckpt
 *.pkl
 *.txt
+*.csv
 
 events*
 logs
 
 corpus.venv
+
