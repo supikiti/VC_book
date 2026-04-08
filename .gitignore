@@ -19,4 +19,5 @@ events*
 logs
 
 corpus.venv
-
+hf_cache
+checkpoints
