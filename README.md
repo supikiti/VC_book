@@ -1,16 +1,16 @@
-# Pythonで学ぶ音声変換 ― サポートページ
+# 音声変換入門　Pythonで作って学ぶボイスチェンジャー ― サポートページ
 
 <a href="https://amzn.asia/d/04IyfN83">
 <img src="assets/cover.jpg" alt="『音声変換入門 Pythonで作って学ぶボイスチェンジャー』書影" width="300">
 </a>
 <br>
-<strong>『Pythonで学ぶ音声変換』</strong><br>
+<strong>『音声変換入門　Pythonで作って学ぶボイスチェンジャー』</strong><br>
 齋藤佑樹・中村泰貴著 ／ 講談社刊<br><br>
 <a href="https://amzn.asia/d/04IyfN83">📖 Amazonで購入</a>
 
 ---
 
-本リポジトリは、書籍『Pythonで学ぶ音声変換』のサポートページです。
+本リポジトリは、書籍『音声変換入門　Pythonで作って学ぶボイスチェンジャー』のサポートページです。
 パラレル音声変換から最新のゼロショット音声変換まで、4つの手法を実際に動かしながら学ぶことができます。
 
 ## 各章のコード
@@ -112,7 +112,7 @@ uv sync
 
 ## 正誤表
 
-書籍の正誤情報は [こちらのスプレッドシート]() で公開しています。
+書籍の正誤情報は [こちらのスプレッドシート](https://docs.google.com/spreadsheets/d/1ogFnCAeIBB4RquJ-u3X2KZ7I_wX8V09I2fGPUx0sZh0/edit?usp=sharing) で公開しています。
 
 ## 謝辞
 
